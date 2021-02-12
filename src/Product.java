@@ -7,6 +7,7 @@ public class Product implements ProductPricingService, HasProductType{
     String exchange;
     String ticker;
     int quantity;
+    int contractCode;
 
     ProductType productType;
 
