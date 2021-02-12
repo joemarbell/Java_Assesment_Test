@@ -1,12 +1,14 @@
 import java.util.List;
 
-public class Product implements ProductPricingService{
+public class Product implements ProductPricingService, HasProductType{
 
     String id;
     double price;
     String exchange;
     String ticker;
     int quantity;
+
+    ProductType productType;
 
     public Product(String id) {
         this.id = id;
@@ -28,5 +30,10 @@ public class Product implements ProductPricingService{
 
     public int getQuantity() {
         return quantity;
+    }
+
+    @Override
+    public ProductType getProductType() {
+        return productType;
     }
 }

@@ -1,11 +1,9 @@
 import java.util.List;
 
-public class Trade implements MontrealTradedProducts, HasProductType{
+public class Trade implements MontrealTradedProducts{
 
     int quantity;
     List<Product> productList;
-    ProductType productType;
-
     @Override
     public void addNewProduct(Product product) throws ProductAlreadyRegisteredException {
         for (Product products : productList) {
@@ -38,9 +36,9 @@ public class Trade implements MontrealTradedProducts, HasProductType{
     public double totalValueOfDaysTradedProducts() {
         double totalValueOfDaysTradedProducts = 0.0;
         for (Product product : productList){
-            if (product.equals(productType)) {
+            if (product.getProductType().equals("Stock")) {
                 totalValueOfDaysTradedProducts += (product.quantity * product.price);
-            } else if (product.equals(productType)) {
+            } else if (product.getProductType().equals("Future")) {
                 totalValueOfDaysTradedProducts += (product.quantity * product.price);
             }
             return totalValueOfDaysTradedProducts;
@@ -48,8 +46,4 @@ public class Trade implements MontrealTradedProducts, HasProductType{
         return 0;
     }
 
-    @Override
-    public ProductType getProductType() {
-        return productType;
-    }
 }
